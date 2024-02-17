@@ -1,4 +1,5 @@
 # README
 
+NaganoCake team C 
 
-NaganoCake チームC ジャンク
+Loving Junk Food
