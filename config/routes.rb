@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root to: "homes#top"
   devise_for :admins
   devise_for :customers
-  namespace :public do
+  scope module: :public do
+    root to: "homes#top"
     get "about"=>"homes#about", as: "about"
     resources :items, only: [:index, :show]
     get '/customers/my_page' => 'customers#show'
