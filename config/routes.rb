@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  root to: "homes#top"
   devise_for :admins
   devise_for :customers
   namespace :public do
-    root to: "homes#top"
-    get "about"=>"homes#about"
+    get "about"=>"homes#about", as: "about"
     resources :items, only: [:index, :show]
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
@@ -18,12 +18,12 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy], path: '/addresses'
   end
   namespace :admin do
+    root to: "homes#top"
     resources :order_details, only: [:update]
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    root to: 'homes#top'
   end
 
 
