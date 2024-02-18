@@ -1,5 +1,19 @@
 @use '~bootstrap/scss/bootstrap';
 
+span {
+  font-family: cursive;
+}
+
+.about {
+  text-align: center;
+  font-family: cursive;
+}
+
+.font {
+  font-size: 64px;
+}
+
 footer {
-  background-color: beige;
+  background-color: pink;
+  font-family: cursive;
 }
