@@ -4,18 +4,26 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
+
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find()
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
   end
+
+  private
+
+
 end

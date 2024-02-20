@@ -5,9 +5,46 @@
         <h4>商品詳細</h4>
       </div>
     </div>
-    
     <div class="row d-flex justify-content-center">
-        
+      <div class="col-md-4 d-flex text-center justify-content-center align-items-center">
+        商品画像
+      </div>
+      <div class="col-md-8 d-flex justify-content-center mr-5">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>商品名</td>
+              <td><%= @item.name %></td>
+            </tr>
+            <tr>
+              <td>商品説明</td>
+              <td><%= @item.introduction %></td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+              <td><%= @item.genre_id%></td>
+            </tr>
+            <tr>
+              <td>税込価格</td>
+              <td><%= @item.price %></td>
+              <td>円</td>
+            </tr>
+            <tr>
+              <td>販売ステータス</td>
+              <td><%= @item.is_active %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-lg" %>
     </div>
   </div>
-</div>  
+</div>
