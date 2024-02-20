@@ -1,2 +1,90 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class = "row">
+  <div class = "offset-2 text-center"> 
+    <h3 class = "my-4 ml-4 px-4 bg-secondary">マイページ</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2 mt-1 pl-5 mb-2">
+    <h3 class="font-weight-bold">登録情報</h3>
+  </div>
+  <div>
+    <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success px-4 py-2"%>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-bordered mt-1 mx-5 col-6">
+    <tr>
+      <td class="table-secondary col-4">
+        氏名
+      </td>
+      <td>
+        <%= @customer.last_name %> <%= raw('&nbsp;') %> <%= @customer.first_name %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="table-secondary col-4">
+        カナ
+      </td>
+      <td>
+        <%= @customer.last_name_kana %> <%= raw('&nbsp;') %> <%= @customer.first_name_kana %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="table-secondary col-4">
+        郵便番号
+      </td>
+      <td>
+        <%= @customer.post_code %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="table-secondary col-4">
+        住所
+      </td>
+      <td>
+        <%= @customer.address %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="table-secondary col-4">
+        電話番号
+      </td>
+      <td>
+        <%= @customer.phone_number %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="table-secondary col-4">
+        メールアドレス
+      </td>
+      <td>
+        <%= @customer.email %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="row">
+  <div class="col-2 mt-1 pl-5 mb-2">
+    <h3 class="font-weight-bold">配送先</h3>
+  </div>
+  <div>
+    <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary px-4 py-2"%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2 mt-1 pl-5 mb-2">
+    <h3 class="font-weight-bold">注文履歴</h3>
+  </div>
+  <div>
+    <%= link_to "一覧を見る", orders_path, class: "btn btn-primary px-4 py-2"%>
+  </div>
+</div>
