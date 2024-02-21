@@ -7,6 +7,10 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    if @order.update(order_params)
+    @order_items.update_all(status: "waiting_for_production") if @order.status == "入金確認"
+   end
+    redirect_to request.referer
   end
 
   def confirm
