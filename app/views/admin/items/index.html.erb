@@ -24,11 +24,11 @@
           <td><%= item.id %></td>
           <td><%= item.name %></td>
           <td><%= item.price %></td>
-          <td><%= item.genre %></td>
+          <td><%= item.genre_id %></td>
           <td><%= item.status %></td>
         </tr>
       <% end %>
-      <%= paginate items %>
+      <%= paginate @items %>
       </tbody>
     </table>
   </div>
