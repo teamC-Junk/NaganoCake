@@ -77,16 +77,9 @@ ActiveRecord::Schema.define(version: 2024_02_16_043535) do
     t.string "post_code"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["email"], name: "index_customers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
@@ -100,7 +93,7 @@ ActiveRecord::Schema.define(version: 2024_02_16_043535) do
     t.string "name"
     t.text "introduction"
     t.integer "price"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -110,7 +103,7 @@ ActiveRecord::Schema.define(version: 2024_02_16_043535) do
     t.integer "order_id"
     t.integer "price"
     t.integer "amount"
-    t.integer "making_status"
+    t.integer "making_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,7 +116,7 @@ ActiveRecord::Schema.define(version: 2024_02_16_043535) do
     t.integer "shipping_fee"
     t.integer "total_payment"
     t.integer "payment_method"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
