@@ -9,6 +9,11 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    if @item.save
+     redirect_to admin_item_path(@item.id),notice: "商品の登録が完了しました"
+    else
+     render :new
+    end
   end
 
   def show
@@ -21,10 +26,15 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admin_item_path(@item.id), notice: "商品情報が更新されました"
+    else
+      render :edit
+    end
   end
-  
+
   private
-  
+
   def item_params
     params.require(:item).permit(:image, :genre_id, :name, :introduction, :price, :is_active)
   end
