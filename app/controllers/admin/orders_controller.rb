@@ -8,7 +8,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_items = @order.order_items
   end
-  
+
   def confirm
     @order = Order.new(order_params)
     @address = Address.find(params[:order][:address])
@@ -16,9 +16,9 @@ class Admin::OrdersController < ApplicationController
     @order.address = @address.address
     @order.name = @address.name
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:customer_id, :post_code, :address, :name, :shipping_fee, :total_payment, :payment_method, :status)
   end
