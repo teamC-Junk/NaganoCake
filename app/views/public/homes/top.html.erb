@@ -9,23 +9,27 @@
   </div>
   <div class="row">
     <div class="col-4 text-center">
-      <h2>新着商品</h2>
+      <h2><strong>新着商品</strong></h2>
       <table class="table table-borderless">
+      <%= @items.each do |item| %>
+      <%= link_to item_path(item) do %>
         <tr>
-          <td>写真</td>
+          <td><%= image_tag item.get_image(200,200), class: "image" %></td>
+        </tr>
+      <% end %>
+        <tr>
+          <td><strong><%= item.name %></strong></td>
         </tr>
         <tr>
-          <td>商品名</td>
+          <td><strong><%= item.price %></strong></td>
         </tr>
-        <tr>
-          <td>価格</td>
-        </tr>
+      <% end %>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col text-right">
-      <%= link_to "全ての商品を見る >", items_path %>
+      <%= link_to "全ての商品を見る >>>", items_path %>
     </div>
   </div>
 </div>
