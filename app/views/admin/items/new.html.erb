@@ -7,7 +7,7 @@
     </div>
 
     <div class="form d-flex justify-content-center">
-      <%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
+    <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -34,7 +34,7 @@
           <tr>
             <td><strong>販売ステータス</strong></td>
             <td>
-              販売中
+              <!--販売中-->
             </td>
           </tr>
         </tbody>
@@ -43,6 +43,6 @@
         <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
       </div>
     </div>
-      <% end %>
+    <% end %>
   </div>
 </div>

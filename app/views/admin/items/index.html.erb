@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-　    <h2>商品一覧</h2>
-　    <h2>
-  　     <%= link_to new_admin_item_path do %>
-  　       <i class="col text-right fa-solid fa-plus"></i>
+    <div class="col-6">
+      <h2><strong>商品一覧</strong></h2>
+    </div>
+    <div class="col-6">
+      <h2 class="text-right">
+        <%= link_to new_admin_item_path do %>
+          <i class="fas fa-plus-circle"></i>
         <% end %>
       </h2>
-      <br>
     </div>
     <table class="table table-striped">
       <thead>
@@ -20,13 +21,16 @@
         </tr>
       </thead>
       <tbody>
+      <% @items.each do |item| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><%= item.genre_id %></td>
+          <td><%= item.status %></td>
         </tr>
+      <% end %>
+      <%= paginate @items %>
       </tbody>
     </table>
   </div>
