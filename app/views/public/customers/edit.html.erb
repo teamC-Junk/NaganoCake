@@ -1,14 +1,29 @@
-<div class= "container">
+<div class="container">
   <div class="row">
-    <div class= "col-3 my-4 ml-5 text-center">
-      <h3 class= "bg-secondary">会員情報編集</h3>
+    <div class="col-3 my-4 ml-5 text-center">
+      <h3 class="bg-secondary">会員情報編集</h3>
     </div>
   </div>
+  
+  <% if @customer.errors.any? %>
+    <h3>
+      <% if @customer.errors.count == 1 %>
+        <%= @customer.errors.count %>error prohibited this obj from being saved:
+      <% else %>
+        <%= @customer.errors.count %>errors prohibited this obj from being saved:
+      <% end %>
+    </h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   
   <%= form_with model: @customer, url: customers_information_path do |f| %>
     <div class="row">
       <div class="col">
-        <table class= "table table-borderless">
+        <table class="table table-borderless">
           <tr>
             <div class="field">
               <th><%= f.label "氏名" %></th>

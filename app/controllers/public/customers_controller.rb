@@ -1,5 +1,4 @@
 class Public::CustomersController < ApplicationController
-before_action :customer_state, only: [:create]
 
   def show
     @customer = Customer.find(current_customer.id)
@@ -24,26 +23,18 @@ before_action :customer_state, only: [:create]
   end
 
   def withdraw
+    @customer = current_customer
+    # is_activeカラムをfalseに変更することにより削除フラグを立てる
+    @customer.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会が完了しました。またのご利用お待ちしております。"
+    redirect_to root_path
   end
 
   private
-  # 
+  # 編集データのストロングパラメータ
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number, :email)
   end
 
-
-  # 会員ステータスがアクティブであるかを判断するメソッド
-  def customer_state
-    # 入力されたemailからアカウントを1件取得
-    customer = Customer.find_by(email: params[:customer][:email])
-    # アカウントを取得できなかった場合、このメソッドを終了する
-    return if customer.nil?
-    return unless customer.valid_password?(params[:customer][:password])
-    # アクティブな顧客はcreateアクションを実行
-    # 退会している顧客はサインアップ画面に遷移する
-    unless customer.is_active
-      return new_customer_registration_path
-    end
-  end
 end
