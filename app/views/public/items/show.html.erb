@@ -1,2 +1,23 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 d-flex">
+      <div>
+        <%= image_tag @item.get_image(400,400), class: "image" %>
+      </div>
+      <h1><strong><%= @item.name %></strong></h1>
+      <p><%= @item.introduction %></p>
+      <h4><%= @item.price %><p>(税込)</p></h4>
+      <%= if @item.is_active == true %>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |cart_item| %>
+        <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
+        <% if customer_signed_in? %>
+          <%= cart_item.hidden_field :customer_id, :price => current_customer.id %>
+        <% end %>
+        <%= cart_item.hidden_field :item_id, => @item.id %>
+        <%= cart_item.button type: "カートに入れる", class: "btn btn-success btn-lg" %>
+      <% else %>
+        <h5 class="text-danger">こちらの商品は在庫切れのため販売停止中です。</h5>
+      <% end %>  
+    </div>
+  </div>
+</div>
