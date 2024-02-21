@@ -11,7 +11,7 @@
     <div class="col-4 text-center">
       <h2><strong>新着商品</strong></h2>
       <table class="table table-borderless">
-      <%= @items.each do |item| %>
+      <% @items.each do |item| %>
       <%= link_to item_path(item) do %>
         <tr>
           <td><%= image_tag item.get_image(200,200), class: "image" %></td>
