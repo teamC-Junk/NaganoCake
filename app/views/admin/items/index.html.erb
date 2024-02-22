@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-6 mt-5 mb-3">
       <h2><strong>商品一覧</strong></h2>
     </div>
-    <div class="col-6">
+    <div class="col-6 mt-5 mb-3">
       <h2 class="text-right">
         <%= link_to new_admin_item_path do %>
           <i class="fas fa-plus-circle"></i>
@@ -24,13 +24,23 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= item.name %></td>
+          <td>
+            <%= link_to admin_item_path(item.id) do %>
+              <%= item.name %>
+            <% end %>
+          </td>
           <td>¥<%= item.price %></td>
           <td><%= item.genre_id %></td>
-          <td><%= item.is_active %></td>
+          <td>
+            <% if item.is_active == true %>
+              <strong class="text-success"><%= "販売中" %></strong>
+            <% else %>
+              <strong class="text-danger"><%= "販売停止中" %></strong>
+            <% end %>
+          </td>
         </tr>
       <% end %>
-      <%= paginate @items %>
+      <tr><%= paginate @items %></tr>
       </tbody>
     </table>
   </div>
