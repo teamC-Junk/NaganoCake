@@ -6,12 +6,17 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+
   end
 
   def destroy
+    @cart_item.destroy
+    redirect_to request.referer, notice: "カート内商品の一つを削除しました。"
   end
 
   def destroy_all
+    CartItem.destroy_all
+    redirect_to request.referer
   end
 
   def create
