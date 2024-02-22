@@ -5,13 +5,12 @@
 <!---->
 
 <div class="container">
-  <div class="row">
-    <h5 class="bg-info col-lg-3 col-md-4">ショッピングカート</h5>
-    <p class="bg-danger col-lg-2 offset-lg-7 col-md-2 offset-md-6">
-      <!--機能未実装-->
-      <%#= link_to cart_items_destroy_all, method: :delete, class: "btn btn-danger form-control" do %>
+  <div class="row text-center">
+    <p class="bg-info col-lg-3 col-md-5">ショッピングカート</p>
+    <p class="bg-danger col-lg-2 offset-lg-7 col-md-4 offset-md-3">
+      <%= link_to cart_items_destroy_all_path, method: :delete, class: "btn btn-danger form-control" do %>
       カートを空にする
-      <%# end %>
+      <% end %>
     </p>
   </div>
   <div class="row">
@@ -28,14 +27,18 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
         <tr>
-          <td>
+          <td class="row">
             <!--Bootstrapによるレイアウトと画像サイズの調整が必要、他モデルとのすり合わせが必要-->
-            <%#= cart_item.get_profile_image %>
-            <%#= cart_item.name %>
+            <div class="col-lg-6 col-md-6 col-6">
+              <%= cart_item.get_image %>
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              <%= cart_item.name %>
+            </div>
           </td>
           <td>
             <!--他モデルとのすり合わせが必要-->
-            <%#= cart_item.price %>
+            <%= cart_item.price %>
           </td>
             <td>
               <div class="form-group">
@@ -53,15 +56,15 @@
             </td>
           <td>
             <!--小計表示枠-->
-            <%#= cart_item.amount * cart_item.price %>
+            <%= cart_item.amount * cart_item.price %>
           </td>
           <td>
               <!--機能未実装-->
-              <%#= link_to cart_items_path(cart_item.item_id), method: :delete do %>
+              <%= link_to cart_items_path(cart_item.item_id), method: :delete do %>
               <button class="btn btn-danger form-control mt-1">
                 削除する
               </button>
-              <%# end %>
+              <% end %>
           </td>
         </tr>
         <% end %>
@@ -76,7 +79,7 @@
       <table class="table table-bordered">
         <tr>
           <th class="table-info">合計金額</th>
-          <!--<th>￥<%#= @total.to_s %></th>-->
+          <th>￥<%= @total.to_s %></th>
         </tr>
       </table>
     </div>
