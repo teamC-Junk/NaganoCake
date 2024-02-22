@@ -6,6 +6,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    redirect_to request.referer
 
   end
 
@@ -21,8 +24,9 @@ class Public::CartItemsController < ApplicationController
 
   def create
   end
+  
   private
   def cart_items_params
-    params.require(:cart_items).permit(:amount)
+    params.require(:cart_items).permit(:amount, :item_id)
   end
 end
