@@ -28,16 +28,9 @@
                 <% if customer_signed_in? %>
                   <%= cart_item.hidden_field :customer_id, value: current_customer.id %>
                   <%= cart_item.hidden_field :item_id, value: @item.id %>
-                  <!--<%#= cart_item.button type: "カートに入れる", class: "btn btn-success btn-lg" %>-->
-
-                  <!--こちらカートに追加する機能のボタンですレイアウトの調整はお願いします。-->
-
                   <div class="form-group">
                     <%= cart_item.submit 'カートに入れる', class: 'btn btn-success btn-md' %>
                   </div>
-
-                  <!--ここまで-->
-
                 <% end %>
               <% end %>
             <% else %>
