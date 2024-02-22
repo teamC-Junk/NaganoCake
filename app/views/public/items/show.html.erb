@@ -23,12 +23,14 @@
         <tr>
           <td>
             <% if @item.is_active == true %>
-              <%= form_with model: @item, url: cart_items_path, method: :post do |cart_item| %>
-              <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
+              <%= form_with model: @cart_item, url: cart_items_path, method: :post do |cart_item| %>
+              <%= cart_item.select :amount, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
                 <% if customer_signed_in? %>
-                  <%= cart_item.hidden_field :customer_id, :price => current_customer.id %>
-                  <%= cart_item.hidden_field :item_id, value: cart_item.id %>
-                  <%= cart_item.button type: "カートに入れる", class: "btn btn-success btn-lg" %>
+                  <%= cart_item.hidden_field :customer_id, value: current_customer.id %>
+                  <%= cart_item.hidden_field :item_id, value: @item.id %>
+                  <div class="form-group">
+                    <%= cart_item.submit 'カートに入れる', class: 'btn btn-success btn-md' %>
+                  </div>
                 <% end %>
               <% end %>
             <% else %>
