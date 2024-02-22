@@ -1,2 +1,52 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<div class="container">
+  <div class = "row">
+    <div class = "offset-1 text-center"> 
+      <h3 class = "my-4 px-4 bg-secondary">
+        配送先編集
+      </h3>
+    </div>
+  </div>
+  
+  <% if @address.errors.any? %>
+    <h3>
+      <% if @address.errors.count == 1 %>
+        <%= @address.errors.count %>error prohibited this obj from being saved:
+      <% else %>
+        <%= @address.errors.count %>errors prohibited this obj from being saved:
+      <% end %>
+    </h3>
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_with model: @address do |f| %>
+    <div class="row">
+      <table class="table table-borderless">
+        <tr>
+          <div class="field">
+            <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+            <td><%= f.text_field :post_code %></td>
+          </div>
+        </tr>
+        
+        <tr>
+          <div class="field">
+            <th><%= f.label :"住所" %></th>
+            <td><%= f.text_field :address, size: 60 %></td>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="field">
+            <th><%= f.label :"宛名" %></th>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit "変更内容を保存", class: "btn btn-success px-5" %></td>
+          </div>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+</div>
