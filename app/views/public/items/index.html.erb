@@ -3,24 +3,20 @@
     <div class="col-lg-10 mt-5 mx-auto">
       <h3><strong>商品一覧</strong>(全<%= @items.count %>件)</h3>
       <table class="table table-borderless">
-        <% @items.each do |item| %>
-            <tr>
-              <th>
+        <% @items.each_slice(5) do |items_group| %>
+          <tr>
+            <% @items.each_with_index do |item| %>
+              <td>
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.get_image(200,200), class: "image" %>
                 <% end %>
-              </th>
-            </tr>
-            <tr>
-              <td>
+                <br>
                 <strong><%= item.name %></strong>
-              </td>
-            </tr>
-            <tr>
-              <td>
+                <br>
                 <strong>¥<%= item.price %></strong>
               </td>
-            </tr>
+            <% end %>
+          </tr>
         <% end %>
       </table>
     </div>

@@ -1,24 +1,42 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-10 d-flex">
+    <div class="col-lg-10 d-flex mt-5">
       <div>
-        <%= image_tag @item.get_image(400,400), class: "image" %>
+        <%= image_tag @item.get_image(300,300), class: "image" %>
       </div>
-      <h1><strong><%= @item.name %></strong></h1>
-      <p><%= @item.introduction %></p>
-      <h4><%= @item.price %><p>(税込)</p></h4>
-        <% if @item.is_active == true %>
-          <% form_with model: @item, url: cart_items_path, method: :post |cart_item| do %>
-          <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
-          <% if customer_signed_in? %>
-          <%= cart_item.hidden_field :customer_id, :price => current_customer.id %>
-          <%= cart_item.hidden_field :item_id, => @item.id %>
-          <%= cart_item.button type: "カートに入れる", class: "btn btn-success btn-lg" %>
-        <% end %>
-        <% end %>
-        <% else %>
-          <h5 class="text-danger">こちらの商品は在庫切れのため販売停止中です。</h5>
-        <% end %>
+      <table class="table table-borderless ml-5">
+        <tr>
+          <td>
+            <h3><strong><%= @item.name %></strong></h3>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><%= @item.introduction %></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>¥<%= @item.price %><span>(税込)</span></h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% if @item.is_active == true %>
+              <%= form_with model: @item, url: cart_items_path, method: :post do |cart_item| %>
+              <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
+                <% if customer_signed_in? %>
+                  <%= cart_item.hidden_field :customer_id, :price => current_customer.id %>
+                  <%= cart_item.hidden_field :item_id, value: cart_item.id %>
+                  <%= cart_item.button type: "カートに入れる", class: "btn btn-success btn-lg" %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <h5 class="text-danger">こちらの商品は在庫切れのため販売停止中です。</h5>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
