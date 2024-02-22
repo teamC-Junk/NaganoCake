@@ -30,7 +30,7 @@
             <% end %>
           </td>
           <td>¥<%= item.price %></td>
-          <td><%= item.genre_id %></td>
+          <td><%= item.genre.name %></td>
           <td>
             <% if item.is_active == true %>
               <strong class="text-success"><%= "販売中" %></strong>

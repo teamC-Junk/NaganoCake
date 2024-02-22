@@ -28,7 +28,7 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= @item.genre_id %></td>
+              <td><%= @item.genre.name %></td>
             </tr>
             <tr>
               <td>税込価格</td>
@@ -36,7 +36,13 @@
             </tr>
             <tr>
               <td>販売ステータス</td>
-              <td><%= @item.is_active %></td>
+              <td>
+                <% if @item.is_active == true %>
+                  <strong class="text-success"><%= "販売中" %></strong>
+                <% else %>
+                  <strong class="text-danger"><%= "販売停止中" %></strong>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>
