@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div class="col-4 text-center">
-      <h2><strong>新着商品</strong></h2>
+      <h2><strong>新着商品</strong>(全<%= @items.count %>件)</h2>
       <table class="table table-borderless">
       <% @items.each do |item| %>
       <%= link_to item_path(item) do %>
