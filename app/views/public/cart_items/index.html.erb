@@ -41,7 +41,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-4 mt-1">
-                    <%= form_with(model: @cartitem, local: true, method: :patch) do |f| %>
+                    <%= form_with model: @cartitem, local: true, method: :patch, url: cart_item_path(cart_item.id) do |f| %>
                     <%= f.select :amount, {'1': 1, '2': 2, '3': 3,'4': 4,'5': 5,'6': 6,'7': 7, '8': 8, '9': 9}, { class: 'form-control border-radius' } %>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-8">
