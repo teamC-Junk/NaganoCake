@@ -8,7 +8,6 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_to request.referer
-
   end
   def destroy_all
     CartItem.destroy_all
@@ -20,7 +19,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to request.referer, notice: "カート内商品の一つを削除しました。"
+    redirect_to request.referer
   end
 
 

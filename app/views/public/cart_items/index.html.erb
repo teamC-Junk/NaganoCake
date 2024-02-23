@@ -19,14 +19,13 @@
               <th>単価(税込)</th>
               <th>数量</th>
               <th>小計</th>
-              <th><!--削除するボタン--></th>
+              <th><!--削除するボタンの枠--></th>
             </tr>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item| %>
             <tr>
               <td class="row mx-0">
-                <!--Bootstrapによるレイアウトと画像サイズの調整が必要、他モデルとのすり合わせが必要-->
                 <div class="col-lg-5 col-md-4 px-0">
                   <%= image_tag cart_item.item.get_image(100,100) %>
                 </div>
@@ -42,7 +41,7 @@
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-sm-4 mt-1">
                         <%= form_with model: @cart_items, local: true, method: :patch, url: cart_item_path(cart_item.id) do |f| %>
-                        <%= f.select :amount, {'1': 1, '2': 2, '3': 3,'4': 4,'5': 5,'6': 6,'7': 7, '8': 8, '9': 9, '10': 10}, { class: 'btn btn-sm border-radius' } %>
+                        <%= f.select :amount, *[1..10], { selected: cart_item.amount, class: 'btn btn-sm border-radius' } %>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-8">
                         <%= f.submit '変更', class: 'btn btn-success btn-block btn-sm' %>
@@ -52,16 +51,14 @@
                   </div>
                 </td>
               <td class="text-center align-middle">
-                <!--小計表示枠-->
                 <%= cart_item.amount * cart_item.item.price %>
               </td>
               <td class="text-center align-middle">
-                  <!--機能未実装-->
-                  <%= link_to cart_item_path(cart_item), method: :delete do %>
-                  <button class="btn btn-danger form-control">
-                    削除する
-                  </button>
-                  <% end %>
+                <%= link_to cart_item_path(cart_item), method: :delete do %>
+                <button class="btn btn-danger form-control">
+                  削除する
+                </button>
+                <% end %>
               </td>
             </tr>
             <% end %>
