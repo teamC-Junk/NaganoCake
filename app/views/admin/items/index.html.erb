@@ -15,7 +15,7 @@
         <tr>
           <td><strong>商品ID</strong></td>
           <td><strong>商品名</strong></td>
-          <td><strong>税抜価格</strong></td>
+          <td><strong>税込価格</strong></td>
           <td><strong>ジャンル</strong></td>
           <td><strong>ステータス</strong></td>
         </tr>
@@ -40,8 +40,10 @@
           </td>
         </tr>
       <% end %>
-      <tr><%= paginate @items %></tr>
       </tbody>
     </table>
   </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate @items %>
 </div>
