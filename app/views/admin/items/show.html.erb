@@ -31,8 +31,10 @@
               <td><%= @item.genre.name %></td>
             </tr>
             <tr>
-              <td>税込価格</td>
-              <td>¥<%= @item.price %></td>
+              <td>税込価格<br>(税抜価格)</td>
+              <td>
+                ¥<%= @item.with_tax_price %><br>(¥<%= @item.price %>)
+              </td>
             </tr>
             <tr>
               <td>販売ステータス</td>
