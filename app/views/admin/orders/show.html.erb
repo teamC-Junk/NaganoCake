@@ -86,15 +86,15 @@
           <tbody>
             <tr>
               <td><strong>商品合計</strong></td>
-              <td>¥<%= number_with_delimiter(@order.shipping_fee - @order.post_code) %></td>
+              <td>¥<%= number_with_delimiter(@order.total_payment - @order.shipping_fee) %></td>
             </tr>
             <tr>
               <td><strong>送料</strong></td>
-              <td>¥<%= @order.post_code.to_s(:shipping_fee) %></td>
+              <td>¥<%= @order.shipping_fee.to_s(:shipping_fee) %></td>
             </tr>
             <tr>
               <td><strong>請求合計金額</strong></td>
-              <td>¥<%= @order.shipping_fee.to_s(:delimited) %></td>
+              <td>¥<%= @order.total_payment.to_s(:total_payment) %></td>
             </tr>
           </tbody>
         </table>
