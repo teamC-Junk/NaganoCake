@@ -2,92 +2,95 @@
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
 
 <!--カートに商品情報を入れないと動きません-->
-<!---->
 
-<div class="container">
-  <div class="row text-center">
-    <p class="bg-info col-lg-3 col-md-5">ショッピングカート</p>
-    <p class="bg-danger col-lg-2 offset-lg-7 col-md-4 offset-md-3">
-      <%= link_to cart_items_destroy_all_path, method: :delete, class: "btn btn-danger form-control" do %>
-      カートを空にする
-      <% end %>
-    </p>
-  </div>
+<div class="container-fluid">
   <div class="row">
-    <table class="table table-bordered col">
-      <thead class="table-info ">
-        <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th><!--削除するボタン--></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
-        <tr>
-          <td class="row">
-            <!--Bootstrapによるレイアウトと画像サイズの調整が必要、他モデルとのすり合わせが必要-->
-            <div class="col-lg-6 col-md-6 col-6">
-              <%= cart_item.get_image %>
-            </div>
-            <div class="col-lg-6 col-md-6 col-6">
-              <%= cart_item.name %>
-            </div>
-          </td>
-          <td>
-            <!--他モデルとのすり合わせが必要-->
-            <%= cart_item.price %>
-          </td>
-            <td>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-4 mt-1">
-                    <%= form_with model: @cartitem, local: true, method: :patch, url: cart_item_path(cart_item.id) do |f| %>
-                    <%= f.select :amount, {'1': 1, '2': 2, '3': 3,'4': 4,'5': 5,'6': 6,'7': 7, '8': 8, '9': 9}, { class: 'form-control border-radius' } %>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-sm-8">
-                    <%= f.submit '変更', class: 'btn btn-success btn-block btn-sm' %>
-                    <% end %>
-                  </div>
+    <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
+      <div class="row d-flex flex-nowrap">
+        <div class="bg-info col-lg-4 col-md-4 text-center my-auto">
+          ショッピングカート
+        </div>
+        <div class="col-lg-4 offset-lg-4 col-md-4 offset-md-4 mt-4 text-right">
+          <%= link_to cart_items_destroy_all_path, method: :delete, class: "btn btn-danger form-group" do %>
+          カートを空にする
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <table class="table table-bordered col">
+          <thead class="table-info ">
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th><!--削除するボタン--></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td class="row mx-0">
+                <!--Bootstrapによるレイアウトと画像サイズの調整が必要、他モデルとのすり合わせが必要-->
+                <div class="col-lg-5 col-md-4 px-0">
+                  <%= image_tag cart_item.item.get_image(100,100) %>
                 </div>
-              </div>
-            </td>
-          <td>
-            <!--小計表示枠-->
-            <%= cart_item.amount * cart_item.price %>
-          </td>
-          <td>
-              <!--機能未実装-->
-              <%= link_to cart_items_path(cart_item.item_id), method: :delete do %>
-              <button class="btn btn-danger form-control mt-1">
-                削除する
-              </button>
-              <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="row">
-    <div class="col-lg-3 col-md-3 pl-3">
-      <%= link_to '買い物を続ける', root_path, class:"btn btn-primary form-control" %>
+                <div class="col-lg-5 col-md-6 offset-md-2 my-auto px-0">
+                  <%= cart_item.item.name %>
+                </div>
+              </td>
+              <td class="text-center align-middle">
+                <%= cart_item.item.price %>
+              </td>
+                <td>
+                  <div class="form-group mt-3">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-4 mt-1">
+                        <%= form_with model: @cart_items, local: true, method: :patch, url: cart_item_path(cart_item.id) do |f| %>
+                        <%= f.select :amount, {'1': 1, '2': 2, '3': 3,'4': 4,'5': 5,'6': 6,'7': 7, '8': 8, '9': 9, '10': 10}, { class: 'btn btn-sm border-radius' } %>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-8">
+                        <%= f.submit '変更', class: 'btn btn-success btn-block btn-sm' %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              <td class="text-center align-middle">
+                <!--小計表示枠-->
+                <%= cart_item.amount * cart_item.item.price %>
+              </td>
+              <td class="text-center align-middle">
+                  <!--機能未実装-->
+                  <%= link_to cart_items_path(cart_item.item_id), method: :delete do %>
+                  <button class="btn btn-danger form-control">
+                    削除する
+                  </button>
+                  <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 pl-3">
+          <%= link_to '買い物を続ける', root_path, class:"btn btn-primary form-control" %>
+        </div>
+        <div class="col-lg-3 offset-lg-6 col-md-4 offset-md-4 px-0">
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-info">合計金額</th>
+              <th>￥<%= @total.to_s %></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div>
+          <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success" %>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-3 offset-lg-6 col-md-4 offset-md-5 px-0">
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-info">合計金額</th>
-          <th>￥<%= @total.to_s %></th>
-        </tr>
-      </table>
-    </div>
   </div>
-  <div class="row mt-3">
-    <div>
-      <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success" %>
-    </div>
-  </div>
-
 </div>
