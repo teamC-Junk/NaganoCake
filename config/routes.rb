@@ -21,11 +21,11 @@ Rails.application.routes.draw do
     patch '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
+    resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy], path: '/addresses'
   end
   namespace :admin do
