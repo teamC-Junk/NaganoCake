@@ -18,7 +18,7 @@ class Public::CartItemsController < ApplicationController
 
 
   def destroy
-    @cart_item = CartItem.find(params[:item_id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to request.referer, notice: "カート内商品の一つを削除しました。"
   end

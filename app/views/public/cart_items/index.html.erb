@@ -1,9 +1,4 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
-
-<!--カートに商品情報を入れないと動きません-->
-
-<div class="container-fluid">
+<div class="container-fluid mt-5">
   <div class="row">
     <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
       <div class="row d-flex flex-nowrap">
@@ -62,7 +57,7 @@
               </td>
               <td class="text-center align-middle">
                   <!--機能未実装-->
-                  <%= link_to cart_items_path(cart_item.item_id), method: :delete do %>
+                  <%= link_to cart_item_path(cart_item), method: :delete do %>
                   <button class="btn btn-danger form-control">
                     削除する
                   </button>
