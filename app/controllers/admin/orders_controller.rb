@@ -10,7 +10,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_items = @order.order_items
     if @order.update(order_params)
-      @order_items.update_all(status: "waiting_for_production") if @order.status == "入金確認"
+      @order_items.update_all(status: "制作待ち") if @order.status == "入金確認"
     end
       redirect_to request.referer
   end
@@ -18,7 +18,7 @@ class Admin::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @address = Address.find(params[:order][:address])
-    @order.postal_code = @address.postal_code
+    @order.post_code = @address.post_code
     @order.address = @address.address
     @order.name = @address.name
   end
