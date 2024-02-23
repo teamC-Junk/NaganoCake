@@ -28,13 +28,11 @@
                 <% if customer_signed_in? %>
                   <%= cart_item.hidden_field :customer_id, value: current_customer.id %>
                   <%= cart_item.hidden_field :item_id, value: @item.id %>
-                  <div class="form-group">
-                    <%= cart_item.submit 'カートに入れる', class: 'btn btn-success btn-md' %>
-                  </div>
+                  <%= cart_item.submit 'カートに入れる', class: 'btn btn-success btn-md' %>
                 <% end %>
               <% end %>
             <% else %>
-              <h5 class="text-danger">こちらの商品は在庫切れのため販売停止中です。</h5>
+              <h6 class="text-danger">こちらの商品は在庫切れのため販売停止中です。</h6>
             <% end %>
           </td>
         </tr>
