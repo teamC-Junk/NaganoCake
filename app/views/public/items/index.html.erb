@@ -3,7 +3,7 @@
     <div class="col-lg-10 mt-5 mx-auto">
       <h3><strong>商品一覧</strong>(全<%= @items.count %>件)</h3>
       <div class="card-deck mt-3">
-        <div class="row">
+        <div class="row col">
           <% @items.each do |item| %>
             <div class="col-3 mb-3">
               <div class="card-borderless">

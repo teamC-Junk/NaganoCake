@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
   end
 
   private
-  
+
   def all_genre
     @genres = Genre.all
   end
