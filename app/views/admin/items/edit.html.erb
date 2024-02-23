@@ -27,7 +27,7 @@
             <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
           </tr>
           <tr>
-            <td><strong>税込価格</strong></td>
+            <td><strong>税抜価格</strong></td>
             <td><%= f.text_field :price, pattern: "^[1-9][0-9]*$", placeholder: "1000", class: "form-control" %></td>
             <td>円</td>
           </tr>
