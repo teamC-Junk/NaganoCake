@@ -7,10 +7,10 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @customer_info = current_customer
+    @cart_items = current_customer.cart_items.all
     
     @order.shipping_fee = 800   # 送料
     @total_price = 0            # 商品合計計算用
-    @consumption_tax = 1.1      # 消費税
   
     if params[:order][:select_address] == "self_address"
       @order.name = current_customer.last_name + current_customer.first_name
@@ -35,14 +35,34 @@ class Public::OrdersController < ApplicationController
     else
       render :new # バグで上記以外の条件が発生した場合の処理
     end
-    
-    @cart_items = current_customer.cart_items.all
   end
 
   def complete
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    # カート内商品の情報を注文履歴に移動
+    current_customer.cart_items.each do |cart_item|
+      # 初期化
+      @order_details = OrderDetail.new
+      # 注履歴文商品に注文idを紐付け
+      @order_details.order_id = @order.id
+      # 商品idを注文履歴商品idに代入
+      @order_details.item_id = cart_item.item_id
+      #商品の個数を注文履歴商品の個数に代入
+      @order_details.amount = cart_item.amount
+      # 税込み価格算出
+      @order_details.price = cart_item.item.with_tax_price
+      # 注文履歴商品を保存
+      @order_details.save!
+    end
+    # カートの中身削除
+    CartItem.destroy_all
+    # 注文完了画面へリダイレクト
+    redirect_to orders_complete_path
   end
 
   def index
