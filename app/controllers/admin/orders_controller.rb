@@ -3,14 +3,14 @@ class Admin::OrdersController < ApplicationController
   def show
     @orders = Order.page(params[:page])
     @order = Order.find(params[:id])
-    @order_items = @order.order_items
+    @order_details = @order.order_details
   end
 
   def update
     @order = Order.find(params[:id])
-    @order_items = @order.order_items
+    @order_details = @order.order_details
     if @order.update(order_params)
-      @order_items.update_all(status: "制作待ち") if @order.status == "入金確認"
+      @order_details.update_all(status: "制作待ち") if @order.status == "入金確認"
     end
       redirect_to request.referer
   end

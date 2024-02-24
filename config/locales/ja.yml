@@ -4,14 +4,20 @@
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
-          
-          status:
-          waiting_for_payment: "入金待ち" 
+
+        status:
+          waiting_for_payment: "入金待ち"
           confirmation_of_payment: "入金確認"
           in_production: "制作中"
           preparing_to_ship: "発送準備中"
           shipped: "発送済み"
-          
+
+        making_status:
+          not_producible: "制作不可"
+          pending_production: "制作待ち"
+          in_production: "制作中"
+          production_completed: "制作完了"
+
     activerecord:
     errors:
       messages:
@@ -29,7 +35,7 @@
       - 金
       - 土
       abbr_month_names:
-      - 
+      -
       - 1月
       - 2月
       - 3月
@@ -55,7 +61,7 @@
         long: "%Y年%m月%d日(%a)"
         short: "%m/%d"
       month_names:
-      - 
+      -
       - 1月
       - 2月
       - 3月

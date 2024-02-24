@@ -22,13 +22,13 @@
                 <% end %>
               </td>
               <td>
-                <%= order.customer.last_name + order.customer.first_name %>
+                <%= order.customer.last_name %><% order.customer.first_name %>
               </td>
               <td>
-                <%= OrderItem.where(order_id: order.id).pluck(:amount).sum %>
+                <%= OrderDetail.where(order_id: order.id).pluck(:amount).sum %>
               </td>
               <td>
-                <%= order.status_i18n %>
+                <%= order.status %>
               </td>
             </tr>
           <% end %>
