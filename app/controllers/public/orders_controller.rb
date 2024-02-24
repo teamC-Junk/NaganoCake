@@ -66,6 +66,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
@@ -73,7 +74,7 @@ class Public::OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:name, :address, :post_code, :payment_method)
+    params.require(:order).permit(:name, :address, :post_code, :payment_method, :total_payment)
   end
 
   def address_params

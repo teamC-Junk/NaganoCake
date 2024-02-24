@@ -1,10 +1,16 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
 <div class="container">
+  <div class = "row">
+    <div class = "offset-1 text-center"> 
+      <h3 class = "my-4 px-4 bg-secondary">
+        注文履歴一覧
+      </h3>
+    </div>
+  </div>
+  
   <div class="row">
     <table class="table table-bordered col">
       <thead>
-        <tr>
+        <tr class="table-secondary">
           <th>注文日</th>
           <th>配送先</th>
           <th>注文商品</th>
@@ -25,13 +31,18 @@
             <%= order.name %>
           </td>
           <td>
-            <%= order.item_id.name %>
+            <% order.order_details.each do |order_detail| %>
+              <%= order_detail.item.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= order.total_payment.to_i.to_s(:delimited) %>円</td>
           </td>
           <td>
             <%= order.status %>
           </td>
           <td>
-            <%= link_to '表示する', orders_path(order.id), class:"btn btn-primary form-control" %>
+            <%= link_to '表示する', order_path(order.id), class:"btn btn-primary form-control" %>
           </td>
         </tr>
         <% end %>
