@@ -94,7 +94,7 @@
       <%= f.hidden_field :address, value: @order.address %>
       <%= f.hidden_field :name, value: @order.name %>
       <%= f.hidden_field :shipping_fee, value: @order.shipping_fee %>
-      <%= f.hidden_field :total_payment, value: @total %>
+      <%= f.hidden_field :total_payment, value: @total_price %>
       <%= f.hidden_field :payment_method, value: @order.payment_method %>
       <%= f.submit "注文を確定する", class: "btn btn-success mt-5" %>
     <% end %>
