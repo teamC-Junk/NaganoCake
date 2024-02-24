@@ -80,7 +80,11 @@
       </div>
       <div class="row mt-3">
         <div>
+          <% unless @total == 0 %>
           <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success" %>
+          <% else %>
+          <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success disabled" %>
+          <% end %>
         </div>
       </div>
     </div>
