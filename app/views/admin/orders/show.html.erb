@@ -86,7 +86,7 @@
           <tbody>
             <tr>
               <td><strong>商品合計</strong></td>
-              <td>¥<%= number_with_delimiter(@order.total_payment - @order.shipping_fee) %></td>
+              <td>¥<%= @order.total_payment - @order.shipping_fee %></td>
             </tr>
             <tr>
               <td><strong>送料</strong></td>
