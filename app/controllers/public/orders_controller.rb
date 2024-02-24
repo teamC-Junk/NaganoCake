@@ -8,10 +8,10 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @customer_info = current_customer
     @cart_items = current_customer.cart_items.all
-    
+
     @order.shipping_fee = 800   # 送料
     @total_price = 0            # 商品合計計算用
-  
+
     if params[:order][:select_address] == "self_address"
       @order.name = current_customer.last_name + current_customer.first_name
       @order.address = current_customer.address
@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:name, :address, :post_code, :shipping_fee, :payment_method, :total_payment)

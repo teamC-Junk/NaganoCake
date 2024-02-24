@@ -15,7 +15,7 @@
             <td><strong>購入者</strong></td>
             <td>
               <%= link_to admin_customer_path(@order.customer.id), class: "admin_link" do %>
-                <%= @order.customer.last_name %><%= raw('&nbsp;') %><% @order.customer.first_name %>
+                <%= @order.customer.last_name %><%= raw('&nbsp;') %><%= @order.customer.first_name %>
               <% end %>
             </td>
           </tr>
@@ -69,7 +69,7 @@
                 <td><%= order_detail.item.name %></td>
                 <td>¥<%= order_detail.item.with_tax_price.to_s %></td>
                 <td><%= order_detail.amount %></td>
-                <td>¥<%= order_detail.amount * order_detail.item.price %></td>
+                <td>¥<%= order_detail.amount * order_detail.item.with_tax_price %></td>
                 <td>
                   <%= form_with model: order_detail, url: admin_order_order_detail_path(order_id: @order.id, id: order_detail.id), local: true, method: :patch do |f| %>
                     <%= f.select :making_status, OrderDetail.making_statuses %>
