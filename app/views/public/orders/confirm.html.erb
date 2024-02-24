@@ -61,7 +61,7 @@
           
           <tr>
             <th class="table-secondary">請求金額</th>
-            <td><%= (@total_price + @order.shipping_fee).to_i.to_s(:delimited) %></td>
+            <td><%= (@total_price += @order.shipping_fee).to_i.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
