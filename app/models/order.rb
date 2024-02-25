@@ -14,7 +14,4 @@ class Order < ApplicationRecord
   validates :address, presence:true
   validates :name, presence:true
   
-  def number_with_delimiter
-    
-  end
 end
