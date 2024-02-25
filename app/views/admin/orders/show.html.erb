@@ -1,11 +1,11 @@
 <div class="container mt-5">
   <div class="col-10 mx-auto mt-5">
     <div class="row justify-content-center mb-3">
-      <div class="col-4 headline">
+      <div class="col-10">
         <h4>注文履歴詳細</h4>
       </div>
     </div>
-    <div class="col-6 d-flex justify-content-center mt-5">
+    <div class="col-6 d-flex justify-content-center">
       <table class="table table-borderless">
         <thead>
 
@@ -71,7 +71,7 @@
                 <td>¥<%= order_detail.amount * order_detail.item.with_tax_price %></td>
                 <td>
                   <%= form_with model: order_detail, url: admin_order_order_detail_path(order_id: @order.id, id: order_detail.id), local: true, method: :patch do |f| %>
-                    <%= f.select :making_status, OrderDetail.making_statuses %>
+                    <%= f.select :making_status, OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
                     <%= f.submit "更新", class: "btn btn-success btn-sm" %>
                   <% end %>
                 </td>
