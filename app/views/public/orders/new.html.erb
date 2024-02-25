@@ -1,7 +1,7 @@
 <div class="container">
-  <div class = "row">
-    <div class = "offset-1 text-center"> 
-      <h3 class = "my-4 px-4 bg-secondary">
+  <div class="row">
+    <div class="offset-1 text-center"> 
+      <h3 class="my-4 px-4 title-color">
         注文情報入力
       </h3>
     </div>
@@ -11,11 +11,11 @@
     <%= form_with model: @order, url: orders_confirm_path do |f| %>
       <h4 class="font-weight-bold">支払方法</h4>
       <div class="col ml-4">
-        <%= f.radio_button :payment_method, "クレジットカード" %>
+        <%= f.radio_button :payment_method, "credit_card" %>
         <%= f.label :payment_method_credit_card, "クレジットカード" %>
       </div>
       <div class="col ml-4">
-        <%= f.radio_button :payment_method, "銀行振込" %>
+        <%= f.radio_button :payment_method, "transfer" %>
         <%= f.label :payment_method_transfer, "銀行振込" %>
       </div>
       

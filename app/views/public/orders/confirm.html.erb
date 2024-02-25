@@ -1,7 +1,7 @@
 <div class="container">
   <div class = "row">
     <div class = "offset-1 text-center"> 
-      <h3 class = "my-4 px-4 bg-secondary">
+      <h3 class = "my-4 px-4 title-color">
         注文情報確認
       </h3>
     </div>
@@ -11,7 +11,7 @@
     <div class="col-8 mx-0">
       <table class="table table-bordered">
         <thead>
-          <tr class="table-secondary">
+          <tr class="title-color">
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
@@ -50,17 +50,17 @@
       <table class="table table-bordered ml-4">
         <tbody>
           <tr>
-            <th class="table-secondary">送料</th>
+            <th class="title-color">送料</th>
             <td class="align-middle"><%= @order.shipping_fee.to_s(:delimited) %></td>
           </tr>
           
           <tr>
-            <th class="table-secondary">商品合計</th>
+            <th class="title-color">商品合計</th>
             <td><%= @total_price.to_i.to_s(:delimited) %></td>
           </tr>
           
           <tr>
-            <th class="table-secondary">請求金額</th>
+            <th class="title-color">請求金額</th>
             <td><%= (@total_price += @order.shipping_fee).to_i.to_s(:delimited) %></td>
           </tr>
         </tbody>
@@ -73,7 +73,7 @@
       <h4 class="font-weight-bold">支払方法</h4>
     </div>
     <div class="col d-flex text-left align-items-center">
-      <%= @order.payment_method %>
+      <%= @order.payment_method_i18n %>
     </div>
   </div>
   
