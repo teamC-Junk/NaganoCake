@@ -9,10 +9,9 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    if @order.update(order_params)
-      @order_details.update_all(status: "制作待ち") if @order.status == "入金確認"
-    end
-      redirect_to request.referer
+    @order.update(order_params)
+    #@order_details.update_all
+    redirect_to request.referer
   end
 
   def confirm
@@ -27,5 +26,9 @@ class Admin::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :post_code, :address, :name, :shipping_fee, :total_payment, :payment_method, :status)
+  end
+
+  def order_detail_params
+    prams.require(:order_detail).permit(:making_status)
   end
 end

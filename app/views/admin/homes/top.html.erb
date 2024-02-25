@@ -28,7 +28,7 @@
                 <%= OrderDetail.where(order_id: order.id).pluck(:amount).sum %>
               </td>
               <td>
-                <%= order.status %>
+                <%= order.status_i18n %>
               </td>
             </tr>
           <% end %>
