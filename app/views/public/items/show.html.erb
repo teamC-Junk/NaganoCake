@@ -24,8 +24,7 @@
           <td>
             <% if @item.is_active == true %>
               <%= form_with model: @cart_item, url: cart_items_path, method: :post do |cart_item| %>
-              <%#= cart_item.select :amount, *[1..10], { include_blank: '個数選択' }, class: "form-select" %>
-              <%= cart_item.select :amount,[1,2,3,4,5,6,7,8,9,10],{include_blank: '個数選択'},required:true%>&emsp;
+              <%= cart_item.select :amount,[1,2,3,4,5,6,7,8,9,10], {include_blank: '個数選択'},required:true %>&emsp;
                 <% if customer_signed_in? %>
                   <%= cart_item.hidden_field :customer_id, value: current_customer.id %>
                   <%= cart_item.hidden_field :item_id, value: @item.id %>

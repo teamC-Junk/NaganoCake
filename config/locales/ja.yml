@@ -1,22 +1,22 @@
- ja:
-    enums:
-      order:
-        payment_method:
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      status:
+        waiting_for_payment: "入金待ち"
+        confirmation_of_payment: "入金確認"
+        in_production: "制作中"
+        preparing_to_ship: "発送準備中"
+        shipped: "発送済み"
 
-        status:
-          waiting_for_payment: "入金待ち"
-          confirmation_of_payment: "入金確認"
-          in_production: "制作中"
-          preparing_to_ship: "発送準備中"
-          shipped: "発送済み"
-
-        making_status:
-          not_producible: "制作不可"
-          pending_production: "制作待ち"
-          in_production: "制作中"
-          production_completed: "制作完了"
+    order_detail:
+      making_status:
+        not_producible: "制作不可"
+        pending_production: "制作待ち"
+        in_production: "制作中"
+        production_completed: "制作完了"
 
     activerecord:
     errors:
