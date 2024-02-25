@@ -1,5 +1,3 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
 <div class="container mt-5">
   <h2 class="ml-5">ジャンル一覧・追加</h3>
   <div class="row mt-5">
@@ -10,9 +8,8 @@
         </div>
         <div class="col-4">
           <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
-          <!--ジャンル名入力フォーム-->
           <div class="form-group">
-            <%= f.text_field :name, class: 'form-control' %>
+            <%= f.text_field :name, placeholder: "ジャンル名", class: 'form-control' %>
           </div>
 
         </div>
