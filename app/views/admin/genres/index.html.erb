@@ -8,7 +8,6 @@
         </div>
         <div class="col-4">
           <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
-          <!--ジャンル名入力フォーム-->
           <div class="form-group">
             <%= f.text_field :name, class: 'form-control' %>
           </div>
