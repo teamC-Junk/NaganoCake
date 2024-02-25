@@ -10,7 +10,6 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @order.update(order_params)
-    #@order_details.update_all
     redirect_to request.referer
   end
 

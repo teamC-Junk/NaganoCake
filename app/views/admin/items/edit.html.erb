@@ -2,7 +2,7 @@
   <div class="col-md-10 mx-auto mt-5">
     <div class="row justify-content-left mb-3">
       <div class="col-md-4">
-        <h4>商品編集</h4>
+        <h4><strong>商品編集</strong></h4>
       </div>
     </div>
 
@@ -34,11 +34,10 @@
           <tr>
             <td><strong>販売ステータス</strong></td>
             <td>
-              <%= f.radio_button :is_active, :true,class:"form-check-input" %>
-              <%= f.label :is_active, "販売中",class:"form-check-label" %>
-              <br>
-              <%= f.radio_button :is_active, :false,class:"form-check-input" %>
-              <%= f.label :is_active, "販売停止中",class:"form-check-label" %>
+              <%= f.radio_button :is_active, :true,class:"form-check-input ml-2" %>
+              <%= f.label :is_active, "販売中",class:"form-check-label ml-4" %>
+              <%= f.radio_button :is_active, :false,class:"form-check-input ml-2" %>
+              <%= f.label :is_active, "販売停止中",class:"form-check-label ml-4" %>
             </td>
           </tr>
         </tbody>
