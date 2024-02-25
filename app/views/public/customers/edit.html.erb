@@ -7,11 +7,7 @@
   
   <% if @customer.errors.any? %>
     <h3>
-      <% if @customer.errors.count == 1 %>
-        <%= @customer.errors.count %>error prohibited this obj from being saved:
-      <% else %>
-        <%= @customer.errors.count %>errors prohibited this obj from being saved:
-      <% end %>
+      <%= @customer.errors.count %>件のエラーが発生したため、保存されませんでした:
     </h3>
     <ul>
       <% @customer.errors.full_messages.each do |message| %>
