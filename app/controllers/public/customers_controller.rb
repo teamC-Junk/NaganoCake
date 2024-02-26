@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-
+    before_action :authenticate_customer!
   def show
     @customer = Customer.find(current_customer.id)
   end
@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(current_customer.id)
-    
+
     if @customer.update(customer_params)
       flash[:notice] = "更新が完了しました。"
       redirect_to customers_my_page_path
