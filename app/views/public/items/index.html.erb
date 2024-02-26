@@ -4,7 +4,7 @@
       <h3><strong>商品一覧</strong>(全<%= @items.count %>件)</h3>
       <div class="card-deck mt-3">
         <div class="row col">
-          <% @items.each do |item| %>
+          <% @items[0,8].each do |item| %>
             <div class="col-3 mb-3">
               <div class="card-borderless">
                 <%= link_to item_path(item) do %>

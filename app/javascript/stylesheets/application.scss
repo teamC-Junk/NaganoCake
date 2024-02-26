@@ -7,6 +7,8 @@ header {
 footer {
   background-color: #FFC0CB;
   font-family: cursive;
+  margin-top: auto;
+  height: auto;
 }
 
 .about {
@@ -16,4 +18,10 @@ footer {
 
 .title-color{
   background-color: #CCFFFF;
+}
+
+.footer_adjustments {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
