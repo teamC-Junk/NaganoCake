@@ -2,7 +2,7 @@
   <div class="row">
     <h2 class="ml-5 title-color">ジャンル一覧・追加</h2>
   </div>
-  
+
   <div class="row mt-5">
     <div class="col-lg-10 col-md-10 px-0 ml-3">
       <div class="row">
@@ -11,17 +11,14 @@
         </div>
         <div class="col-4">
           <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
-          <div class="form-group">
-            <%= f.text_field :name, placeholder: "ジャンル名", class: 'form-control' %>
-          </div>
+            <div class="form-group">
+              <%= f.text_field :name, placeholder: "ジャンル名" %>
+              <%= f.submit "新規登録", class: 'btn btn-success' %>
+            </div>
 
-        </div>
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.submit "新規登録", class: 'btn btn-success' %>
-          </div>
           <% end %>
         </div>
+
       </div>
     </div>
   </div>
