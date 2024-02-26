@@ -37,12 +37,13 @@
             </td>
           </tr>
           <tr>
-            <td><strong>注文ステータス</strong></td>
-            <%= form_with model: @order, method: :patch, url: admin_order_path(@order.id) do |f|%>
-            <td><%= @order.status_i18n %></td>
-            <td><%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
-            <td><%= f.submit '更新', class: "btn btn-success btn-sm" %></td>
-            <% end %>
+            <th><strong>注文ステータス</strong></th>
+            <td>
+              <%= form_with model: @order, method: :patch, url: admin_order_path(@order.id) do |f|%>
+                <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+                <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
