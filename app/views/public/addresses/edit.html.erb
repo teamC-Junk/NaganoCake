@@ -9,11 +9,7 @@
   
   <% if @address.errors.any? %>
     <h3>
-      <% if @address.errors.count == 1 %>
-        <%= @address.errors.count %>error prohibited this obj from being saved:
-      <% else %>
-        <%= @address.errors.count %>errors prohibited this obj from being saved:
-      <% end %>
+      <%= @address.errors.count %>件のエラーが発生したため、保存されませんでした:
     </h3>
     <ul>
       <% @address.errors.full_messages.each do |message| %>
