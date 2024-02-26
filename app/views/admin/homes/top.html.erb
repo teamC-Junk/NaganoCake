@@ -18,12 +18,12 @@
             <tr>
               <td>
                 <%= link_to admin_order_path(order.id) do %>
-                  <%= order.created_at %>
+                  <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
                 <% end %>
               </td>
               <td>
                 <%= order.customer.last_name %><%= order.customer.first_name %>
-              </td>
+              </t
               <td>
                 <%= OrderDetail.where(order_id: order.id).pluck(:amount).sum %>
               </td>
@@ -34,7 +34,7 @@
           <% end %>
         </tbody>
       </table>
-      
+
       <div class="d-flex justify-content-center mt-4">
         <%= paginate @orders %>
       </div>
