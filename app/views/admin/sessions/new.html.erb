@@ -16,25 +16,24 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
         </div>
       </div>
-  </div>
-  <div class="field form-group">
-    <div class="row">
-      <div class="col-lg-2 offset-lg-2 flex-md-fill mt-2">
-        <%= f.label :パスワード %>
-      </div>
-      <div class="col-lg-7 offset-lg-1 flex-md-fill">
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <div class="row">
+        <div class="col-lg-2 offset-lg-2 flex-md-fill mt-2">
+          <%= f.label :パスワード %>
+        </div>
+        <div class="col-lg-7 offset-lg-1 flex-md-fill">
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
       </div>
     </div>
   </div>
   <div class="field form-group">
     <div class="row">
       <div class="actions mt-5 col-lg-7 offset-lg-5">
-        <%= f.submit "ログイン", class:"btn btn-primary btn-sm" %>
+        <%= f.submit "ログイン", class:"btn btn-primary btn-lg" %>
       </div>
     </div>
   </div>
 <% end %>
-  <%= render "admin/shared/links" %>
-  </div>
-</div>
+<%= render "admin/shared/links" %>
