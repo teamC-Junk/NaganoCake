@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-    before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def show
     @orders = Order.page(params[:page])
@@ -11,6 +11,13 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @order.update(order_params)
+    
+    # 注文ステータスが「入金確認」に更新
+    if @order.status == "confirmation_of_payment"
+      # 制作ステータスを全商品「製作待ち」に更新
+      @order_details.update_all(making_status: "pending_production")
+    end
+    
     redirect_to request.referer
   end
 
