@@ -1,0 +1,27 @@
+<div class="container mt-5 ">
+  <div class = "row">
+    <div class = "offset-1 text-center"> 
+      <h3 class = "my-4 px-4 title-color">
+        ジャンル編集
+      </h3>
+    </div>
+  </div>
+        
+  <div class="row mt-5">
+    <div class="col-md-10 col-lg-10">
+      <div class="row">
+          <div class="col-3">
+            <strong><p class="mt-1">&ensp;ジャンル名</p></strong>
+          </div>
+          <div class="col-9">
+            <div class="form-group">
+              <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
+              <%= f.text_field :name %>
+              <%= f.submit '変更を保存', class: 'btn btn-success btn-sm mb-1 ml-5' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 my-4 ml-5 text-center">
+      <h3 class="title-color">会員情報編集</h3>
+    </div>
+  </div>
+  
+  <% if @customer.errors.any? %>
+    <h3>
+      <%= @customer.errors.count %>件のエラーが発生したため、保存されませんでした:
+    </h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_with model: @customer, url: customers_information_path do |f| %>
+    <div class="row">
+      <div class="col">
+        <table class="table table-borderless">
+          <tr>
+            <div class="field">
+              <th><%= f.label "氏名" %></th>
+              <th>
+                <%= f.text_field :last_name, class: "mr-5" %>
+                <%= f.text_field :first_name %>
+              </th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"フリガナ" %></th>
+              <th>
+                <%= f.text_field :last_name_kana, class: "mr-5" %>
+                <%= f.text_field :first_name_kana %>
+              </th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"郵便番号" %></th>
+              <th><%= f.text_field :post_code %></th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"住所" %></th>
+              <th><%= f.text_field :address, size: 60 %></th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"電話番号" %></th>
+              <th><%= f.text_field :phone_number %></th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"メールアドレス" %></th>
+              <th><%= f.email_field :email %></th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="actions">
+              <th></th>
+              <th>
+                <%= f.submit "編集内容を保存", class: "btn btn-success px-5" %>
+                <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger offset-2 px-4" %>
+              </th>
+            </div>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

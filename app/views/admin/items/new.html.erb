@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="col-md-10 mx-auto mt-5">
+    <div class="row justify-content-left mb-3">
+      <div class="col-md-4 title-color">
+        <h4 class="text-center"><strong>商品新規登録</strong></h4>
+      </div>
+    </div>
+
+    <div class="form d-flex justify-content-center">
+    <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><strong>商品画像</strong></td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td><strong>商品名</strong></td>
+            <td><%= f.text_field :name, autofocus: true, placeholder: "商品名", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><strong>商品説明</strong></td>
+            <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "form-control", rows: "7" %></td>
+          </tr>
+          <tr>
+            <td><strong>ジャンル</strong></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><strong>税抜価格</strong></td>
+            <td><%= f.text_field :price, pattern: "^[1-9][0-9]*$", placeholder: "1000", class: "form-control" %></td>
+            <td>円</td>
+          </tr>
+          <tr>
+            <td><strong>販売ステータス</strong></td>
+            <td>
+
+              <%= f.radio_button :is_active, :true,class:"form-check-input ml-2" %>
+              <%= f.label :is_active, "販売中",class:"form-check-label ml-4" %>
+
+              <%= f.radio_button :is_active, :false,class:"form-check-input ml-2" %>
+              <%= f.label :is_active, "販売停止中",class:"form-check-label ml-4" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

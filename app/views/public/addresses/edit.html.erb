@@ -1,0 +1,48 @@
+<div class="container">
+  <div class = "row">
+    <div class = "offset-1 text-center"> 
+      <h3 class = "my-4 px-4 title-color">
+        配送先編集
+      </h3>
+    </div>
+  </div>
+  
+  <% if @address.errors.any? %>
+    <h3>
+      <%= @address.errors.count %>件のエラーが発生したため、保存されませんでした:
+    </h3>
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_with model: @address do |f| %>
+    <div class="row">
+      <table class="table table-borderless">
+        <tr>
+          <div class="field">
+            <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+            <td><%= f.text_field :post_code %></td>
+          </div>
+        </tr>
+        
+        <tr>
+          <div class="field">
+            <th><%= f.label :"住所" %></th>
+            <td><%= f.text_field :address, size: 60 %></td>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="field">
+            <th><%= f.label :"宛名" %></th>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit "変更内容を保存", class: "btn btn-success px-5" %></td>
+          </div>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+</div>

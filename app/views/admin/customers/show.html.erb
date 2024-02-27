@@ -1,0 +1,68 @@
+<div class="container">
+  <div class = "row">
+    <div class = "text-center"> 
+      <h3 class = "my-4 px-4 title-color">
+        <%= @customer.last_name + @customer.first_name %>さんの会員詳細
+      </h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <table class="table table-borderless mt-1 col-6">
+      <tr>
+        <td class="col-4">会員ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">氏名</td>
+        <td><%= @customer.last_name %> <%= raw('&nbsp;') %> <%= @customer.first_name %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">フリガナ</td>
+        <td><%= @customer.last_name_kana %> <%= raw('&nbsp;') %> <%= @customer.first_name_kana %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">郵便番号</td>
+        <td><%= @customer.post_code %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">電話番号</td>
+        <td><%= @customer.phone_number %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+      
+      <tr>
+        <td class="col-4">会員ステータス</td>
+        <td>
+          <% if @customer.is_active == true %>
+            <span class="text-success">有効</span>
+          <% else %>
+            <span class="text-secondary">退会</span>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="row">
+    <div class = "offset-2 text-center">
+      <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success px-4 py-1" %>
+    </div>
+    <div class = "offset-1 text-center">
+      <%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary px-4 py-1" %>
+    </div>
+  </div>
+</div>

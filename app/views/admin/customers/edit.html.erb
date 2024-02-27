@@ -1,0 +1,110 @@
+<div class="container">
+  <div class = "row">
+    <div class = "text-center"> 
+      <h3 class = "my-4 px-4 title-color">
+        <%= @customer.last_name + @customer.first_name %>さんの会員情報編集
+      </h3>
+    </div>
+  </div>
+  
+  <% if @customer.errors.any? %>
+    <h3>
+      <% if @customer.errors.count == 1 %>
+        <%= @customer.errors.count %>error prohibited this obj from being saved:
+      <% else %>
+        <%= @customer.errors.count %>errors prohibited this obj from being saved:
+      <% end %>
+    </h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+    <div class="row">
+      <div class="col">
+        <table class="table table-borderless">
+          <tr>
+            <th class="col-2 font-weight-bold">会員ID</th>
+            <td><%= @customer.id %></td>
+          </tr>
+          
+          <tr>
+            <div class="field">
+              <th><%= f.label "氏名" %></th>
+              <td>
+                <%= f.text_field :last_name, class: "mr-5" %>
+                <%= f.text_field :first_name %>
+              </td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"フリガナ" %></th>
+              <td>
+                <%= f.text_field :last_name_kana, class: "mr-5" %>
+                <%= f.text_field :first_name_kana %>
+              </td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"郵便番号" %></th>
+              <td><%= f.text_field :post_code %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"住所" %></th>
+              <td><%= f.text_field :address, size: 60 %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"電話番号" %></th>
+              <td><%= f.text_field :phone_number %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <th><%= f.label :"メールアドレス" %></th>
+              <td><%= f.email_field :email %></td>
+            </div>
+          </tr>
+          
+          <tr>
+            <div class="field">
+              <th><%= f.label :"会員ステータス" %></th>
+              <th>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :is_active, true, class: "form-check-input" %>
+                  <%= label :is_active, "有効", class: "form-check-label mr-3" %>
+                </div>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :is_active, false, class: "form-check-input" %>
+                  <%= label :is_active, "退会", class: "form-check-label" %>
+                </div>
+              </th>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="actions">
+              <th></th>
+              <th>
+                <%= f.submit "変更を保存", class: "btn btn-success px-5 py-3" %>
+              </th>
+            </div>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

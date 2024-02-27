@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mt-5 mx-auto">
+      <h3><strong>商品一覧</strong>(全<%= @items.count %>件)</h3>
+      <div class="card-deck mt-3">
+        <div class="row col">
+          <% @items[0,8].each do |item| %>
+            <div class="col-3 mb-3">
+              <div class="card-borderless">
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.get_image(200,200), class: "image" %>
+                <% end %>
+                <div class="card-body">
+                  <p class="card-title">
+                    <strong><%= item.name %></strong>
+                  </p>
+                  <p class="card-text">
+                    <strong>¥<%= item.price %></strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate @items %>
+</div>

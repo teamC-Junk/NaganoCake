@@ -1,0 +1,27 @@
+@use '~bootstrap/scss/bootstrap';
+
+header {
+  font-family: cursive;
+}
+
+footer {
+  background-color: #FFC0CB;
+  font-family: cursive;
+  margin-top: auto;
+  height: auto;
+}
+
+.about {
+  color: #FFA500;
+  font-family: cursive;
+}
+
+.title-color{
+  background-color: #CCFFFF;
+}
+
+.footer_adjustments {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
